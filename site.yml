@@ -1,7 +1,7 @@
 ---
 - name: Check RouterOS Version
   connection: network_cli
-  hosts: device_roles_router
+  hosts: mikrotik
   gather_facts: False
 
   tasks:
