@@ -1,0 +1,15 @@
+---
+- name: Check RouterOS Version
+  connection: network_cli
+  hosts: device_roles_router
+  gather_facts: False
+
+  tasks:
+    - name: Show RouterOS Version
+      community.network.routeros_command:
+        commands: system resource print
+      register: result
+
+    - name: Display RouterOS Version
+      debug:
+        msg: "{{ result.stdout }}"
