@@ -1,15 +1,14 @@
 ---
-- name: Check RouterOS Version
-  connection: network_cli
-  hosts: mikrotik
-  gather_facts: False
-
+- name: Execute 'show policy-map' on Cisco devices
+  hosts: cisco
+  gather_facts: no
   tasks:
-    - name: Show RouterOS Version
-      community.network.routeros_command:
-        commands: system resource print
-      register: result
+    - name: Run 'show policy-map'
+      cisco.ios.ios_command:
+        commands:
+          - show policy-map
+      register: policy_map_output
 
-    - name: Display RouterOS Version
+    - name: Display output
       debug:
-        msg: "{{ result.stdout }}"
+        var: policy_map_output.stdout_lines
