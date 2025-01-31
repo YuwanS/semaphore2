@@ -3,10 +3,10 @@
   hosts: cisco
   gather_facts: no
   tasks:
-    - name: Run 'show policy-map'
+    - name: Run 'show ip int brief'
       cisco.ios.ios_command:
         commands:
-          - show policy-map
+          - show ip int brief
       register: policy_map_output
 
     - name: Display output
