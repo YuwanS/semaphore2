@@ -7,8 +7,13 @@
       cisco.ios.ios_command:
         commands:
           - show ip int brief
-      register: policy_map_output
-
+      register: show ip int brief
+    - name: Run 'policy map'
+      cisco.ios.ios_command:
+        commands:
+          - show policy map
+      register: show policy map
+      
     - name: Display output
       debug:
         var: policy_map_output.stdout_lines
