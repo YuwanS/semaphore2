@@ -6,8 +6,8 @@
     - name: Run 'show ip int brief'
       cisco.ios.ios_command:
         commands:
-          - show ip int brief
-      register: show ip int brief
+          - show ip interface brief
+      register: output
     - name: Run 'policy map'
       cisco.ios.ios_command:
         commands:
