@@ -14,9 +14,9 @@
           - show policy-map
       register: policy_map_output
       
-    - name: Display output policy map
+    - name: 1 . Display output policy map
       debug:
         var: policy_map_output.stdout_lines
-    - name: Display output ip int brief
+    - name: 2. Display output ip int brief
       debug:
         var: int_brief_output.stdout_lines
