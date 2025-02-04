@@ -11,8 +11,8 @@
     - name: Run 'policy map'
       cisco.ios.ios_command:
         commands:
-          - policy_map_output
-      register: show policy map
+          - show policy map
+      register: policy_map_output
       
     - name: Display output policy map
       debug:
