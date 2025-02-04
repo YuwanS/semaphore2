@@ -6,14 +6,17 @@
     - name: Run 'show ip int brief'
       cisco.ios.ios_command:
         commands:
-          - show ip interface brief
-      register: output
+          - show ip int brief
+      register: int_brief_output
     - name: Run 'policy map'
       cisco.ios.ios_command:
         commands:
-          - show policy map
+          - policy_map_output
       register: show policy map
       
-    - name: Display output
+    - name: Display output policy map
       debug:
         var: policy_map_output.stdout_lines
+    - name: Display output ip int brief
+      debug:
+        var: int_brief_output.stdout_lines
