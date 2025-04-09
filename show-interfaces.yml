@@ -1,14 +1,16 @@
 ---
-- name: Execute 'show interfaces' on Cisco devices
-  hosts: cisco
+- name: Menjalankan perintah show interfaces di Cisco switch
+  hosts: switch
   gather_facts: no
+  connection: network_cli
+
   tasks:
-    - name: Run 'show interfaces'
+    - name: Jalankan perintah show interfaces
       cisco.ios.ios_command:
         commands:
           - show interfaces
-      register: interfaces_output
-      
-    - name: Display output interfaces
+      register: hasil_show_interfaces
+
+    - name: Tampilkan hasil output show interfaces
       debug:
-        var: interfaces_output.stdout_lines
+        var: hasil_show_interfaces.stdout_lines
