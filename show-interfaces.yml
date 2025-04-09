@@ -3,12 +3,12 @@
   hosts: cisco
   gather_facts: no
   tasks:
-    - name: Run 'show ip int brief'
+    - name: Run 'show interfaces'
       cisco.ios.ios_command:
         commands:
           - show interfaces
       register: interfaces_output
       
-    - name: Display output policy map
+    - name: Display output interfaces
       debug:
         var: interfaces_output.stdout_lines
