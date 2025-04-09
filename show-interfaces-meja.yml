@@ -1,0 +1,16 @@
+---
+- name: Menjalankan perintah show interfaces di Cisco switch
+  hosts: switch-meja
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: Jalankan perintah show interfaces
+      cisco.ios.ios_command:
+        commands:
+          - show interfaces
+      register: hasil_show_interfaces
+
+    - name: Tampilkan hasil output show interfaces
+      debug:
+        var: hasil_show_interfaces.stdout_lines
