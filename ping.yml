@@ -1,0 +1,10 @@
+---
+- name: Ping ke perangkat Cisco
+  hosts: switch-meja
+  gather_facts: no
+  connection: network_cli
+
+  tasks:
+    - name: Ping menggunakan Ansible
+      ansible.netcommon.net_ping:
+        count: 4
