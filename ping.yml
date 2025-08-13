@@ -1,6 +1,6 @@
 ---
 - name: Test ping ICMP dari server Ansible ke perangkat
-  hosts: switch-meja
+  hosts: switch
   gather_facts: no
   connection: network_cli
 
