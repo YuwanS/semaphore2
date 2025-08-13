@@ -1,10 +1,16 @@
 ---
-- name: Test koneksi login ke perangkat
+- name: Test ping ICMP dari server Ansible ke perangkat
   hosts: switch-meja
   gather_facts: no
   connection: network_cli
 
   tasks:
-    - name: Jalankan command kosong
-      ansible.builtin.debug:
-        msg: "Koneksi ke perangkat berhasil."
+    - name: Ping perangkat dari server Ansible
+      ansible.builtin.command: "ping -c 4 {{ ansible_host }}"
+      connection: local
+      register: hasil_ping
+      ignore_errors: yes
+
+    - name: Tampilkan hasil ping
+      debug:
+        var: hasil_ping.stdout_lines
